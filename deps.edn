@@ -1,0 +1,7 @@
+{:deps    {malli {:git/url "https://github.com/metosin/malli"
+                  :sha     "16b2ef0a3dcc9e78b4db317a87401cb3516f06eb"}}
+ :aliases {:dev  {}
+           :test {:extra-paths ["test"]
+                  :extra-deps  {clojure.java-time             {:mvn/version "0.3.2"}
+                                lambdaisland/kaocha           {:mvn/version "0.0-554"}
+                                lambdaisland/kaocha-cloverage {:mvn/version "0.0-41"}}}}}
