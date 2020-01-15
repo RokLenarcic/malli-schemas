@@ -4,8 +4,6 @@
   (:import (java.util Base64)
            (java.nio.charset StandardCharsets)))
 
-
-
 (defn -inline-xf
   "Create a schema type with which will chain encoder/decoder with the child one"
   [v]

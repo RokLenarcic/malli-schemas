@@ -44,14 +44,21 @@ You can specify formatter for a particular schema at the schema definition itsel
 => "1999-01-01T00:00:00Z"
 ```
 
-Remember that `Instant` type lacks timezone so it will fail if you try to formatter without timezone set.
-For `dt/inst` schema the above formatter should be defined as:
+#### *Important*
+
+*`date` and `inst` parsing and formatting require a formatter that either doesn't use a timezone (like the ISO format) 
+or your provided `DateTimeFormatter` object will need to have timezone override set:*
 
 ```clojure
 [dt/inst {:fmt (-> (DateTimeFormatter/ofPattern "yyyy") (.withZone (ZoneId/of "GMT")))}]
 ```
 
+*If you provide formatter as a String, this will be done for you automatically for `date` and `inst` schemas.
+The `ZoneId` used will be identified by `:tz` option in transformer constructor or by override in schema properties:*  
 
+```clojure
+[dt/inst {:fmt "yyyy" :tz "America/Detroit"}]
+```
 
 #### Inline
 
